@@ -16,8 +16,7 @@ class ChannelSettingsController extends Controller {
 			[ 'channel' => $channel ] );
 	}
 
-	public function update( ChannelSettingsController $request, Channel $channel ) { // ChannelSettingsController goes
-		// here todo
+	public function update( ChannelUpdateRequest $request, Channel $channel ) { //ChannelUpdateRequest instead or Request
 		$this->authorize( 'update', $channel );
 		$channel->update( [
 			'name'        => $request->name,
@@ -25,12 +24,10 @@ class ChannelSettingsController extends Controller {
 			'description' => $request->description,
 		] );
 
-		return redirect()->back()->to( "/channel/{$channel->slug}/edit" );
+		return redirect()->to( "/channel/{$channel->slug}/edit" );
 	}
-
-//	public function message() {
-//		return [
-//			'slug.unique' => 'That unique URL has been taken.',
-//		];
-//	}
 }
+
+
+
+
